@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+   Edit Content: {{ title }}
+
+{% endblock %}
+
+{% block body %}
+<form action="{% url 'save' title %}"  method="POST">
+
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleInputEmail1">Title :</label>
+    <input type="text" class="form-control col-lg-3" name="title" required="required" value= "{{ title }}" readonly></div>
+  <div class="form-group">
+      <label for="exampleFormControlTextarea1">Content :</label>
+      <textarea class="form-control col-lg-10" rows="10" name="content" required="required">{{ content }}</textarea>
+    </div>
+ 
+  <button type="submit" class="btn btn-primary col-lg-1">Save</button>
+</form>
+{% endblock %}
